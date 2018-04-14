@@ -40,4 +40,4 @@ public class TwoWindows extends Application {
         launch(args);
     }
 
-}
+} // class
