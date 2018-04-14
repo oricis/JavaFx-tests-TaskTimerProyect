@@ -24,8 +24,8 @@ public class TwoWindows extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass()
-            .getResource("FXMLDocFirstWindow.fxml"));
+        Parent root = FXMLLoader.load(
+            getClass().getResource("FXMLDocFirstWindow.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -35,6 +35,7 @@ public class TwoWindows extends Application {
 
     /**
      * @param args the command line arguments
+     *
      */
     public static void main(String[] args) {
         launch(args);

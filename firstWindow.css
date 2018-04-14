@@ -1,0 +1,15 @@
+/*** First Window CSS ***/
+
+    .font-blue {
+        -fx-text-fill: #6493D5; /* font color */
+    }
+
+    .background-blue {
+        -fx-background-fill: #D7E2F0;
+    }
+
+    .border {
+        -fx-border-color: grey;
+        -fx-border-radius: 5;
+        -fx-padding: 10;
+    }
