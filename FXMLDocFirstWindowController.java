@@ -25,7 +25,7 @@ public class FXMLDocFirstWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        label.setText("Hello World!");
+        label.setText( "First Window" );
     }
 
 } // class
