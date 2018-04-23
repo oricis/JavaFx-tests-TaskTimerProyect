@@ -16,10 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author orici
- */
 public class TwoWindows extends Application {
 
     @Override
