@@ -28,16 +28,18 @@ public class TwoWindows extends Application {
                 "resources/FXMLDocFirstWindow.fxml"));
         Parent secondRoot = FXMLLoader.load(
             getClass().getResource(
-                "resources/FXMLDocFirstWindow.fxml"));
+                "resources/FXMLDocSecondWindow.fxml"));
         
         Scene firstScene  = new Scene( firstRoot );
         Scene secondScene = new Scene( secondRoot );
 
         firstStage.setScene( firstScene );
         secondStage.setScene( secondScene );
+        firstStage.setTitle("Main window");
 
         /**
-         * Shows in first place the first window and behind the second one
+         * Shows in first place the first window and behind the 
+         * second one
          */
         secondStage.show();
         firstStage.show();

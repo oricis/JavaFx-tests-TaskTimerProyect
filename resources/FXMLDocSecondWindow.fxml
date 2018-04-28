@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane
+    id="AnchorPane"
+    prefHeight="250"
+    prefWidth="380"
+
+    styleClass="background-pink"
+    stylesheets="@secondWindow.css"
+
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="javafx.SecondWindowController">
+    <children>
+
+        <Label
+            fx:id="label"
+            layoutX="95"
+            layoutY="75.0"
+            maxWidth="200"
+            minHeight="20"
+            minWidth="200"
+
+            style="-fx-underline:true"
+            stylesheets="@secondWindow.css"
+
+            textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+
+            <!-- applied various styles using classes -->
+            <styleClass>
+                <String fx:value="border" />
+                <String fx:value="font-pink" />
+            </styleClass>
+        </Label>
+
+    </children>
+</AnchorPane>
+

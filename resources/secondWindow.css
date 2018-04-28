@@ -1,0 +1,15 @@
+/*** First Window CSS ***/
+
+    .font-pink {
+        -fx-text-fill: rgb(212, 24, 118); /* font color */
+    }
+
+    .background-pink {
+        -fx-background-fill: rgb(248, 184, 232);
+    }
+
+    .border {
+        -fx-border-color: grey;
+        -fx-border-radius: 5;
+        -fx-padding: 10;
+    }
