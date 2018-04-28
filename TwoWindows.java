@@ -19,14 +19,28 @@ import javafx.stage.Stage;
 public class TwoWindows extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(
-            getClass().getResource("resources/FXMLDocFirstWindow.fxml"));
+    public void start( Stage firstStage ) throws Exception {
+        // creates the secondary stage
+        final Stage secondStage = new Stage();
 
-        Scene scene = new Scene(root);
+        Parent firstRoot = FXMLLoader.load(
+            getClass().getResource(
+                "resources/FXMLDocFirstWindow.fxml"));
+        Parent secondRoot = FXMLLoader.load(
+            getClass().getResource(
+                "resources/FXMLDocFirstWindow.fxml"));
+        
+        Scene firstScene  = new Scene( firstRoot );
+        Scene secondScene = new Scene( secondRoot );
 
-        stage.setScene(scene);
-        stage.show();
+        firstStage.setScene( firstScene );
+        secondStage.setScene( secondScene );
+
+        /**
+         * Shows in first place the first window and behind the second one
+         */
+        secondStage.show();
+        firstStage.show();
     }
 
     /**
