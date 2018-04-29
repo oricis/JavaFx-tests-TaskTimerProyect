@@ -10,6 +10,7 @@
  */
 package javafx;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,34 +19,45 @@ import javafx.stage.Stage;
 
 public class TwoWindows extends Application {
 
+    private Stage firstStage = null;
+    private Stage secondStage = null;
+
+    
     @Override
     public void start( Stage firstStage ) throws Exception {
-        // creates the secondary stage
-        final Stage secondStage = new Stage();
-
-        Parent firstRoot = FXMLLoader.load(
-            getClass().getResource(
-                "resources/FXMLDocFirstWindow.fxml"));
-        Parent secondRoot = FXMLLoader.load(
-            getClass().getResource(
-                "resources/FXMLDocSecondWindow.fxml"));
-        
-        
-        Scene firstScene  = new Scene( firstRoot );
-        Scene secondScene = new Scene( secondRoot );
-
-        firstStage.setScene( firstScene );
-        secondStage.setScene( secondScene );
-        firstStage.setTitle("Main window");
+        this.firstStage = firstStage;
 
         /**
          * Shows in first place the first window and behind the 
          * second one
          */
-        secondStage.show();
-        firstStage.show();
+        openSecondaryWindow();
+        openMainWindow();
+    }
+
+    public void openMainWindow() throws IOException {
+        Parent firstRoot = FXMLLoader.load(
+            getClass().getResource(
+                "resources/FXMLDocFirstWindow.fxml"));
+
+        Scene firstScene  = new Scene( firstRoot );
         
-        showWindowTraces( firstRoot );
+        this.firstStage.setScene( firstScene );
+        this.firstStage.setTitle("Main window");
+
+        this.firstStage.show();
+    }
+
+    public void openSecondaryWindow() throws IOException {
+        Parent secondRoot = FXMLLoader.load(
+            getClass().getResource(
+                "resources/FXMLDocSecondWindow.fxml"));
+        
+        this.secondStage  = new Stage();
+        Scene secondScene = new Scene( secondRoot );
+        secondStage.setScene( secondScene );
+
+        secondStage.show();
     }
 
     /**
