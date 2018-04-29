@@ -30,6 +30,7 @@ public class TwoWindows extends Application {
             getClass().getResource(
                 "resources/FXMLDocSecondWindow.fxml"));
         
+        
         Scene firstScene  = new Scene( firstRoot );
         Scene secondScene = new Scene( secondRoot );
 
@@ -43,6 +44,8 @@ public class TwoWindows extends Application {
          */
         secondStage.show();
         firstStage.show();
+        
+        showWindowTraces( firstRoot );
     }
 
     /**
@@ -51,6 +54,17 @@ public class TwoWindows extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void showWindowTraces( Parent root ) {
+        try {
+            System.out.println( root.toString( ));
+            String str = root.getOnMouseClicked().toString();
+            System.out.println("-> " + str);
+            
+        } catch(Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 } // class
