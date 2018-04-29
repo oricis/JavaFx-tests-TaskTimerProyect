@@ -28,36 +28,55 @@ public class TwoWindows extends Application {
         this.firstStage = firstStage;
 
         /**
-         * Shows in first place the first window and behind the 
-         * second one
+         * Shows the first window
          */
-        openSecondaryWindow();
         openMainWindow();
     }
 
-    public void openMainWindow() throws IOException {
-        Parent firstRoot = FXMLLoader.load(
-            getClass().getResource(
-                "resources/FXMLDocFirstWindow.fxml"));
-
-        Scene firstScene  = new Scene( firstRoot );
+    /**
+     * Opens the main window
+     * 
+     */
+    public void openMainWindow() {
         
-        this.firstStage.setScene( firstScene );
-        this.firstStage.setTitle("Main window");
+        try {
+            Parent firstRoot = FXMLLoader.load(
+                getClass().getResource(
+                    "resources/FXMLDocFirstWindow.fxml"));
 
-        this.firstStage.show();
+            Scene firstScene  = new Scene( firstRoot );
+            
+            this.firstStage.setScene( firstScene );
+            this.firstStage.setTitle("Main window");
+
+            this.firstStage.show();
+        } catch(IOException e) {
+            System.err.println(
+                "ERR -> Opening main window... \n" + e.toString( ));
+        }
     }
 
-    public void openSecondaryWindow() throws IOException {
-        Parent secondRoot = FXMLLoader.load(
-            getClass().getResource(
-                "resources/FXMLDocSecondWindow.fxml"));
-        
-        this.secondStage  = new Stage();
-        Scene secondScene = new Scene( secondRoot );
-        secondStage.setScene( secondScene );
+    /**
+     * Opens the secondary window
+     * 
+     */
+    public void openSecondaryWindow() {
 
-        secondStage.show();
+        try {
+            Parent secondRoot = FXMLLoader.load(
+                getClass().getResource(
+                    "resources/FXMLDocSecondWindow.fxml"));
+            
+            this.secondStage  = new Stage();
+            Scene secondScene = new Scene( secondRoot );
+            secondStage.setScene( secondScene );
+
+            secondStage.show();
+
+        } catch(IOException e) {
+            System.err.println(
+                "ERR -> Opening secondary window... \n" + e.toString( ));
+        }
     }
 
     /**
@@ -66,17 +85,6 @@ public class TwoWindows extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-
-    private void showWindowTraces( Parent root ) {
-        try {
-            System.out.println( root.toString( ));
-            String str = root.getOnMouseClicked().toString();
-            System.out.println("-> " + str);
-            
-        } catch(Exception e) {
-            System.err.println(e.getMessage());
-        }
     }
 
 } // class
