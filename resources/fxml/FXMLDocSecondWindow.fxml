@@ -41,6 +41,18 @@
             </styleClass>
         </Label>
 
+        <Button fx:id="button"
+            layoutX="80"
+            layoutY="140"
+            onAction="#closeWindow"
+            text="Cerrar Ventana" />
+
+        <Button fx:id="closeButton"
+            layoutX="200"
+            layoutY="140"
+            onAction="#closeWindow2"
+            text="Cerrar Ventana" />
+
     </children>
 </AnchorPane>
 

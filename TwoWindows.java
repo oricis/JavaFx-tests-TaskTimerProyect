@@ -22,8 +22,11 @@ public class TwoWindows extends Application {
 
     private AnchorPane firstRoot;
     private FXMLLoader loader;
-    private Stage firstStage = null;
+    private Stage firstStage  = null;
     private Stage secondStage = null;
+    private FirstWindowController controller  = null;
+    private SecondWindowController controller2 = null;
+    
 
 
     @Override
@@ -74,15 +77,20 @@ public class TwoWindows extends Application {
     public void openSecondaryWindow() {
 
         try {
-            Parent secondRoot = FXMLLoader.load(
-                getClass().getResource(
-                    "resources/fxml/FXMLDocSecondWindow.fxml"));
+            String fxml = "resources/fxml/FXMLDocSecondWindow.fxml";
+            FXMLLoader loader2 = new FXMLLoader();
+            loader2.setLocation(getClass().getResource( fxml ));
+            AnchorPane aPane = (AnchorPane) loader2.load();
 
-            this.secondStage  = new Stage();
-            Scene secondScene = new Scene( secondRoot );
-            secondStage.setScene( secondScene );
 
-            secondStage.show();
+            Scene secondScene = new Scene( aPane );
+            this.secondStage = new Stage();
+            this.secondStage.setScene(secondScene);
+
+            this.secondStage.show();
+
+            this.controller2 = loader2.getController();
+            this.controller2.setStage(this.secondStage);
 
         } catch(IOException e) {
             System.err.println(
@@ -105,8 +113,8 @@ public class TwoWindows extends Application {
      */
     private void connectWithController() {
 
-        FirstWindowController controller = this.loader.getController();
-        controller.setApp(this);
+        this.controller = this.loader.getController();
+        this.controller.setApp(this);
     }
 
 } // class
