@@ -21,12 +21,12 @@ import javafx.stage.Stage;
 public class TwoWindows extends Application {
 
     private AnchorPane firstRoot;
-    private FXMLLoader loader;
+    private FXMLLoader loader, loader2;
     private Stage firstStage  = null;
     private Stage secondStage = null;
     private FirstWindowController controller  = null;
     private SecondWindowController controller2 = null;
-    
+
 
 
     @Override
@@ -44,6 +44,14 @@ public class TwoWindows extends Application {
          *
          */
         connectWithController();
+    }
+
+    /**
+     * Closes the secondary window
+     *
+     */
+    public void closeSecondaryWindow() {
+        this.secondStage.close();
     }
 
     /**
@@ -78,9 +86,9 @@ public class TwoWindows extends Application {
 
         try {
             String fxml = "resources/fxml/FXMLDocSecondWindow.fxml";
-            FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(getClass().getResource( fxml ));
-            AnchorPane aPane = (AnchorPane) loader2.load();
+            this.loader2 = new FXMLLoader();
+            this.loader2.setLocation(getClass().getResource( fxml ));
+            AnchorPane aPane = (AnchorPane) this.loader2.load();
 
 
             Scene secondScene = new Scene( aPane );
@@ -89,8 +97,12 @@ public class TwoWindows extends Application {
 
             this.secondStage.show();
 
-            this.controller2 = loader2.getController();
-            this.controller2.setStage(this.secondStage);
+            /**
+             * Connect the second window controller with this class to
+             * handle close window methods
+             *
+             */
+            connectWithController2();
 
         } catch(IOException e) {
             System.err.println(
@@ -99,15 +111,16 @@ public class TwoWindows extends Application {
     }
 
     /**
-     * @param args the command line arguments
+     * Main method
      *
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
 
     /**
-     * Connect a FXML controller with this class
+     * Connects a FXML controller with this class
      *
      * @param fxml
      */
@@ -115,6 +128,18 @@ public class TwoWindows extends Application {
 
         this.controller = this.loader.getController();
         this.controller.setApp(this);
+    }
+
+    /**
+     * Connects a FXML controller with this class
+     *
+     * @param fxml
+     */
+    private void connectWithController2() {
+
+        this.controller2 = this.loader2.getController();
+        this.controller2.setApp(this);
+        this.controller2.setStage(this.secondStage);
     }
 
 } // class

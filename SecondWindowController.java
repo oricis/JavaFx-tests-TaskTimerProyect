@@ -30,11 +30,21 @@ public class SecondWindowController implements Initializable {
     private Label label;
 
     private Stage stage = null;
+    private TwoWindows app = null;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         label.setText( "Second Window" );
+    }
+
+    /**
+     * Sets the main app class
+     *
+     * @param app
+     */
+    public void setApp(TwoWindows app) {
+        this.app = app;
     }
 
     /**
@@ -72,6 +82,7 @@ public class SecondWindowController implements Initializable {
     private void closeWindow3() {
         System.out.println(getClass() + " / closeWindow3()");
 
+        this.app.closeSecondaryWindow();
     }
 
 } // class
