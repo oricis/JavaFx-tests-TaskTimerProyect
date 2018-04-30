@@ -15,14 +15,17 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class TwoWindows extends Application {
 
+    private AnchorPane firstRoot;
+    private FXMLLoader loader;
     private Stage firstStage = null;
     private Stage secondStage = null;
 
-    
+
     @Override
     public void start( Stage firstStage ) throws Exception {
         this.firstStage = firstStage;
@@ -31,25 +34,33 @@ public class TwoWindows extends Application {
          * Shows the first window
          */
         openMainWindow();
+
+        /**
+         * Connect the first window controller with this class
+         * with this the button in the controller can open the secondary window
+         *
+         */
+        connectWithController();
     }
 
     /**
      * Opens the main window
-     * 
+     *
      */
     public void openMainWindow() {
-        
+        String fxml = "resources/FXMLDocFirstWindow.fxml";
         try {
-            Parent firstRoot = FXMLLoader.load(
-                getClass().getResource(
-                    "resources/FXMLDocFirstWindow.fxml"));
+            this.loader = new FXMLLoader(
+                getClass().getResource( fxml ));
+
+            this.firstRoot = (AnchorPane) this.loader.load();
 
             Scene firstScene  = new Scene( firstRoot );
-            
+
             this.firstStage.setScene( firstScene );
             this.firstStage.setTitle("Main window");
-
             this.firstStage.show();
+
         } catch(IOException e) {
             System.err.println(
                 "ERR -> Opening main window... \n" + e.toString( ));
@@ -58,7 +69,7 @@ public class TwoWindows extends Application {
 
     /**
      * Opens the secondary window
-     * 
+     *
      */
     public void openSecondaryWindow() {
 
@@ -66,7 +77,7 @@ public class TwoWindows extends Application {
             Parent secondRoot = FXMLLoader.load(
                 getClass().getResource(
                     "resources/FXMLDocSecondWindow.fxml"));
-            
+
             this.secondStage  = new Stage();
             Scene secondScene = new Scene( secondRoot );
             secondStage.setScene( secondScene );
@@ -85,6 +96,17 @@ public class TwoWindows extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    /**
+     * Connect a FXML controller with this class
+     *
+     * @param fxml
+     */
+    private void connectWithController() {
+
+        FirstWindowController controller = this.loader.getController();
+        controller.setApp(this);
     }
 
 } // class
