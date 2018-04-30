@@ -8,26 +8,26 @@
 
 <AnchorPane
     id="AnchorPane"
-    prefHeight="250"
-    prefWidth="380"
+    prefHeight="200"
+    prefWidth="320"
 
-    styleClass="background-pink"
-    stylesheets="@secondWindow.css"
+    styleClass="background-blue"
+    stylesheets="@../css/firstWindow.css"
 
     xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="javafx.SecondWindowController">
+    fx:controller="javafx.FirstWindowController">
     <children>
 
         <Label
             fx:id="label"
-            layoutX="95"
+            layoutX="85"
             layoutY="75.0"
-            maxWidth="200"
+            maxWidth="160"
             minHeight="20"
-            minWidth="200"
+            minWidth="120"
 
             style="-fx-underline:true"
-            stylesheets="@secondWindow.css"
+            stylesheets="@../css/firstWindow.css"
 
             textAlignment="CENTER">
             <font>
@@ -37,9 +37,19 @@
             <!-- applied various styles using classes -->
             <styleClass>
                 <String fx:value="border" />
-                <String fx:value="font-pink" />
+                <String fx:value="font-blue" />
             </styleClass>
         </Label>
+        <Button
+            fx:id="button"
+            layoutX="85"
+            layoutY="140"
+            maxWidth="160"
+            minHeight="20"
+            minWidth="160"
+            onAction="#openSecondWindow"
+            style="-fx-padding: 10"
+            text="Open window" />
 
     </children>
 </AnchorPane>

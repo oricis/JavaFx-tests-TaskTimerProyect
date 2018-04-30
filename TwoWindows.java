@@ -48,7 +48,7 @@ public class TwoWindows extends Application {
      *
      */
     public void openMainWindow() {
-        String fxml = "resources/FXMLDocFirstWindow.fxml";
+        String fxml = "resources/fxml/FXMLDocFirstWindow.fxml";
         try {
             this.loader = new FXMLLoader(
                 getClass().getResource( fxml ));
@@ -76,7 +76,7 @@ public class TwoWindows extends Application {
         try {
             Parent secondRoot = FXMLLoader.load(
                 getClass().getResource(
-                    "resources/FXMLDocSecondWindow.fxml"));
+                    "resources/fxml/FXMLDocSecondWindow.fxml"));
 
             this.secondStage  = new Stage();
             Scene secondScene = new Scene( secondRoot );
