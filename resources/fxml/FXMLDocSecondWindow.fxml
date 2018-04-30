@@ -42,15 +42,21 @@
         </Label>
 
         <Button fx:id="button"
-            layoutX="80"
+            layoutX="50"
             layoutY="140"
             onAction="#closeWindow"
             text="Cerrar Ventana" />
 
         <Button fx:id="closeButton"
-            layoutX="200"
+            layoutX="160"
             layoutY="140"
             onAction="#closeWindow2"
+            text="Cerrar Ventana" />
+
+        <Button fx:id="closeButtonNew"
+            layoutX="270"
+            layoutY="140"
+            onAction="#closeWindow3"
             text="Cerrar Ventana" />
 
     </children>
