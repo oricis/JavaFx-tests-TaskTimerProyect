@@ -23,6 +23,8 @@ public class SecondWindowController implements Initializable {
     @FXML
     private Button button;
     @FXML
+    private Button closeApp;
+    @FXML
     private Button closeButton;
     @FXML
     private Button closeButtonNew;
@@ -56,6 +58,10 @@ public class SecondWindowController implements Initializable {
         this.stage = stage;
     }
 
+    @FXML
+    private void closeApp() {
+        System.exit(0);
+    }
 
     @FXML
     private void closeWindow() {

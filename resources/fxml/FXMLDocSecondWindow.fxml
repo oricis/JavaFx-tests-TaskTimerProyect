@@ -59,6 +59,12 @@
             onAction="#closeWindow3"
             text="Cerrar Ventana" />
 
+        <Button fx:id="closeApp"
+            layoutX="160"
+            layoutY="200"
+            onAction="#closeApp"
+            text="Cerrar Aplicación" />
+
     </children>
 </AnchorPane>
 
